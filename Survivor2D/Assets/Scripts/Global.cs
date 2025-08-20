@@ -148,7 +148,7 @@ namespace ProjectSurvicor
 
         protected override void Init()
         {
-           
+            this.RegisterSystem(new CoinUpgradeSystem());
         }
     }
 }

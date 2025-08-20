@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      093_paired_rotate_sword_icon_0: 2564873040482977591
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

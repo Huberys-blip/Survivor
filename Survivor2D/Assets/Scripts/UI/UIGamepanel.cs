@@ -9,7 +9,7 @@ namespace Script
 	public class UIGamepanelData : UIPanelData
 	{
 	}
-	public partial class UIGamepanel : UIPanel
+	public partial class UIGamepanel : UIPanel, IController
 	{
 		protected override void OnInit(IUIData uiData = null)
 		{
@@ -89,7 +89,7 @@ namespace Script
 				if (enemyGenerator.LastWave && enemyGenerator.CurrentWave == null && EnemyGenerator.EnemyCount.Value == 0)
 				{
 					this.CloseSelf();
-						UIKit.OpenPanel<UIGamePasspanel>();
+					UIKit.OpenPanel<UIGamePasspanel>();
 				}
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
@@ -98,6 +98,7 @@ namespace Script
 			{
 				PlayerPrefs.SetInt("coin", coin);
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
+			this.GetSystem<CoinUpgradeSystem>().Say();
 		}
 
 		protected override void OnOpen(IUIData uiData = null)
@@ -115,5 +116,10 @@ namespace Script
 		protected override void OnClose()
 		{
 		}
-	}
+
+        public IArchitecture GetArchitecture()
+        {
+            return Global.Interface;
+        }
+    }
 }

@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      093_achievement_time_icon_0: -5169398139637216657
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      093_paired_ball_icon_0: -8107770594927421793
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

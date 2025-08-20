@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1142046080528895994}
   - component: {fileID: 4263804079260952153}
   - component: {fileID: 5598919382060805614}
+  - component: {fileID: 1601589651480104055}
   m_Layer: 5
   m_Name: LevelText
   m_TagString: Untagged
@@ -96,6 +97,21 @@ MonoBehaviour:
   CustomComponentName: LevelText
   CustomComment: 
   mComponentName: UnityEngine.UI.Text
+--- !u!114 &1601589651480104055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997235964244503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &138875620228631505
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +267,7 @@ GameObject:
   - component: {fileID: 1896460576174953062}
   - component: {fileID: 6908317955374640366}
   - component: {fileID: 9170977114104080462}
+  - component: {fileID: 6682413342675351589}
   m_Layer: 5
   m_Name: CionText
   m_TagString: Untagged
@@ -335,6 +352,21 @@ MonoBehaviour:
   CustomComponentName: CionText
   CustomComment: 
   mComponentName: UnityEngine.UI.Text
+--- !u!114 &6682413342675351589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2444617791290624903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3005562586889981766
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +379,7 @@ GameObject:
   - component: {fileID: 5296432391040479611}
   - component: {fileID: 2868664741640064351}
   - component: {fileID: 5017723534724709579}
+  - component: {fileID: 6959721360267684337}
   m_Layer: 5
   m_Name: ExpText
   m_TagString: Untagged
@@ -431,6 +464,21 @@ MonoBehaviour:
   CustomComponentName: ExpText
   CustomComment: 
   mComponentName: UnityEngine.UI.Text
+--- !u!114 &6959721360267684337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3005562586889981766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4025859366131853691
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +491,7 @@ GameObject:
   - component: {fileID: 7376448671759792509}
   - component: {fileID: 4405894749932922720}
   - component: {fileID: 7696889938513811203}
+  - component: {fileID: 2566493460994628119}
   m_Layer: 5
   m_Name: TimeText
   m_TagString: Untagged
@@ -527,6 +576,21 @@ MonoBehaviour:
   CustomComponentName: TimeText
   CustomComment: 
   mComponentName: UnityEngine.UI.Text
+--- !u!114 &2566493460994628119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025859366131853691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6080115519075737584
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +741,7 @@ GameObject:
   - component: {fileID: 843887801534686398}
   - component: {fileID: 3265608117691245277}
   - component: {fileID: 3953557814146329516}
+  - component: {fileID: 5680674195506543076}
   m_Layer: 5
   m_Name: HpText
   m_TagString: Untagged
@@ -761,6 +826,21 @@ MonoBehaviour:
   CustomComponentName: HpText
   CustomComment: 
   mComponentName: UnityEngine.UI.Text
+--- !u!114 &5680674195506543076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6531864767358834153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6637138826923773691
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,6 +991,7 @@ GameObject:
   - component: {fileID: 9071923825334838758}
   - component: {fileID: 5756062509189512979}
   - component: {fileID: 8315874636803896220}
+  - component: {fileID: 3312628773678004717}
   m_Layer: 5
   m_Name: EnemyCountText
   m_TagString: Untagged
@@ -995,6 +1076,21 @@ MonoBehaviour:
   CustomComponentName: EnemyCountText
   CustomComment: 
   mComponentName: UnityEngine.UI.Text
+--- !u!114 &3312628773678004717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6866494065741753071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7892427559522509793
 GameObject:
   m_ObjectHideFlags: 0

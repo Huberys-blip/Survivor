@@ -44,6 +44,7 @@ namespace Script
 		public void Hurt(float damage)
 		{
 			if (mIgnreHurt)return;
+			FloatingTextController.Play(transform.position, damage.ToString());
 			AudioKit.PlaySound("Hit");
 			Sprite.color = Color.red;
 			ActionKit.Delay(0.2f, () =>

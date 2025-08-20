@@ -937,6 +937,7 @@ GameObject:
   - component: {fileID: 8235758613632617724}
   - component: {fileID: 4737093030118926723}
   - component: {fileID: 8963570257532222592}
+  - component: {fileID: 6662379421902847337}
   m_Layer: 0
   m_Name: CoinText
   m_TagString: Untagged
@@ -1021,6 +1022,21 @@ MonoBehaviour:
   CustomComponentName: CoinText
   CustomComment: 
   mComponentName: UnityEngine.UI.Text
+--- !u!114 &6662379421902847337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187821183707075476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4825346966197510624
 GameObject:
   m_ObjectHideFlags: 0
