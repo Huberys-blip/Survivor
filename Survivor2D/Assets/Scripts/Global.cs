@@ -132,22 +132,11 @@ namespace ProjectSurvicor
                    .Position(enemy.Position())
                    .Show();
             }
-            // if (random <= 90)
-            // {
-            //     PowerUpManager.Instance.Exp.Instantiate()
-            //         .Position(enemy.Position())
-            //         .Show();
-            // }
-            // else
-            // {
-            //     PowerUpManager.Instance.Coin.Instantiate()
-            //        .Position(enemy.Position())
-            //        .Show();
-            // }
         }
 
         protected override void Init()
         {
+            this.RegisterSystem(new SaveSystem());
             this.RegisterSystem(new CoinUpgradeSystem());
         }
     }

@@ -30,12 +30,12 @@ namespace Script
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 			Global.Exp.RegisterWithInitValue(exp =>
 			{
-				ExpText.text = " 经验值（" + exp + "/" + (Global.ExpToNextLevel()) + ")";
+				ExpText.text = "经验值" + exp + "/" + Global.ExpToNextLevel();
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
 			Global.Level.RegisterWithInitValue(level =>
 			{
-				LevelText.text = " 等级" + level;
+				LevelText.text = "等级" + level;
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
 			Global.Level.Register(level =>

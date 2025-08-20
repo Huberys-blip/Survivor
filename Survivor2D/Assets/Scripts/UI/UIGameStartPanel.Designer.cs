@@ -5,7 +5,7 @@ using QFramework;
 
 namespace Script
 {
-	// Generate Id:5b56e864-0dd4-4c71-bf27-1605bee485ea
+	// Generate Id:29c19402-3df5-4040-bc08-add7b211a05c
 	public partial class UIGameStartPanel
 	{
 		public const string Name = "UIGameStartPanel";
@@ -15,17 +15,7 @@ namespace Script
 		[SerializeField]
 		public UnityEngine.UI.Button BtnStartGame;
 		[SerializeField]
-		public RectTransform CoinUpgradePanel;
-		[SerializeField]
-		public UnityEngine.UI.Text CoinText;
-		[SerializeField]
-		public UnityEngine.UI.Button BtnCoinPercentUpgrade;
-		[SerializeField]
-		public UnityEngine.UI.Button BtnExpPercentUpgrade;
-		[SerializeField]
-		public UnityEngine.UI.Button BtnPlayerMaxHpUpgrade;
-		[SerializeField]
-		public UnityEngine.UI.Button BtnClose;
+		public CoinUpgradePanel CoinUpgradePanel;
 		
 		private UIGameStartPanelData mPrivateData = null;
 		
@@ -34,11 +24,6 @@ namespace Script
 			BtnCoinUpgrade = null;
 			BtnStartGame = null;
 			CoinUpgradePanel = null;
-			CoinText = null;
-			BtnCoinPercentUpgrade = null;
-			BtnExpPercentUpgrade = null;
-			BtnPlayerMaxHpUpgrade = null;
-			BtnClose = null;
 			
 			mData = null;
 		}

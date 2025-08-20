@@ -25,51 +25,7 @@ namespace Script
 			{
 				CoinUpgradePanel.Show();
 			});
-			BtnClose.onClick.AddListener(() =>
-			{
-				CoinUpgradePanel.Hide();
-			});
-			Global.Coin.RegisterWithInitValue(coin=>
-			{
-				CoinText.text = "金币：" + coin;
-				if (coin >= 5)
-				{
-					BtnCoinPercentUpgrade.Show();
-					BtnExpPercentUpgrade.Show();
-				}
-				else
-				{
-					BtnCoinPercentUpgrade.Hide();
-					BtnExpPercentUpgrade.Hide();
-				}
-				if (coin >= 30)
-				{
-					BtnPlayerMaxHpUpgrade.Show();
-				}
-				else
-				{
-					BtnPlayerMaxHpUpgrade.Hide();
-				}
-			}).UnRegisterWhenGameObjectDestroyed(gameObject);
-
-			BtnCoinPercentUpgrade.onClick.AddListener(() =>
-			{
-				AudioKit.PlaySound("AbilityleveUp");
-				Global.Coin.Value-=5;
-				Global.CoinPercent.Value+=0.1f;
-			});
-			BtnExpPercentUpgrade.onClick.AddListener(() =>
-			{
-				AudioKit.PlaySound("AbilityleveUp");
-				Global.Coin.Value-=5;
-				Global.ExpPercent.Value+=0.1f;
-			});
-			BtnPlayerMaxHpUpgrade.onClick.AddListener(() =>
-			{
-				AudioKit.PlaySound("AbilityleveUp");
-				Global.Coin.Value -= 30;
-				Global.MaxHp.Value++;
-			});
+			
 		
 		}
 		
