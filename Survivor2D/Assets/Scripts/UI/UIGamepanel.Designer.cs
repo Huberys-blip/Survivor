@@ -5,7 +5,7 @@ using QFramework;
 
 namespace Script
 {
-	// Generate Id:dab49cac-70f4-44a2-aea0-fab2a2073bae
+	// Generate Id:374a0570-8d48-4139-bd31-168286d5fe32
 	public partial class UIGamepanel
 	{
 		public const string Name = "UIGamepanel";
@@ -23,11 +23,7 @@ namespace Script
 		[SerializeField]
 		public UnityEngine.UI.Text CionText;
 		[SerializeField]
-		public RectTransform UpgradeRoot;
-		[SerializeField]
-		public UnityEngine.UI.Button BtnUpgrade;
-		[SerializeField]
-		public UnityEngine.UI.Button BtnSimpleDurationUpgrade;
+		public ExpUpgradePanel ExpUpgradePanel;
 		
 		private UIGamepanelData mPrivateData = null;
 		
@@ -39,9 +35,7 @@ namespace Script
 			TimeText = null;
 			EnemyCountText = null;
 			CionText = null;
-			UpgradeRoot = null;
-			BtnUpgrade = null;
-			BtnSimpleDurationUpgrade = null;
+			ExpUpgradePanel = null;
 			
 			mData = null;
 		}

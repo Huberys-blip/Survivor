@@ -37,12 +37,12 @@ namespace Script
 			{
 				LevelText.text = "等级" + level;
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
-
+			ExpUpgradePanel.Hide();
 			Global.Level.Register(level =>
 			{
 				Time.timeScale = 0;
 				AudioKit.PlaySound("LevelUp");
-				UpgradeRoot.Show();
+				ExpUpgradePanel.Show();
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
 			Global.Exp.RegisterWithInitValue(exp =>
@@ -66,22 +66,7 @@ namespace Script
 				}
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
-			UpgradeRoot.Hide();
-			BtnUpgrade.onClick.AddListener(() =>
-			{
-				AudioKit.PlaySound("AbilityleveUp");
-				UpgradeRoot.Hide();
-				Global.SimpleAbilityDamage.Value *= 1.5f;
-				Time.timeScale = 1f;
-			});
-			BtnSimpleDurationUpgrade.onClick.AddListener(() =>
-			{
-				AudioKit.PlaySound("AbilityleveUp");
-				UpgradeRoot.Hide();
-				Global.SimpleAbilityDuration.Value *= 0.8f;
-				Time.timeScale = 1f;
-			});
-
+			
 			var enemyGenerator = FindObjectOfType<EnemyGenerator>();
 			ActionKit.OnUpdate.Register(() =>
 			{
@@ -92,8 +77,7 @@ namespace Script
 					UIKit.OpenPanel<UIGamePasspanel>();
 				}
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
-
-			//Global.Coin.Value = PlayerPrefs.GetInt("coin",0);
+			
 			Global.Coin.Register(coin =>
 			{
 				PlayerPrefs.SetInt("coin", coin);

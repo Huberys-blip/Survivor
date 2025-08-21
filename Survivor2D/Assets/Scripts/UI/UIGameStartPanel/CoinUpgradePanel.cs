@@ -32,7 +32,7 @@ namespace Script
 						itemCache.Upgrade();
 					});
 					var selfCache = self;
-					item.OnChanged.Register(() =>
+					itemCache.OnChanged.Register(() =>
 					{
 						if (itemCache.CounditionCheck())
 						{

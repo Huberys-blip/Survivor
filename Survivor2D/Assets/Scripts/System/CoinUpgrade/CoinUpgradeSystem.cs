@@ -85,7 +85,7 @@ namespace ProjectSurvicor
         }
         public void Say()
         {
-            Debug.Log("CoinUpgradeSystem Say");
+           // Debug.Log("CoinUpgradeSystem Say");
         }
 
         public void Save()

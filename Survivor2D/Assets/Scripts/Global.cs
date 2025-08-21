@@ -83,6 +83,7 @@ namespace ProjectSurvicor
             SimpleAbilityDuration.Value = 1.5f;
             CuhrrentSeconds.Value = 0f;
             EnemyGenerator.EnemyCount.Value = 0;
+            Interface.GetSystem<ExpUpgradeSystem>().ResetData();
         }
         public static int ExpToNextLevel()
         {
@@ -138,6 +139,7 @@ namespace ProjectSurvicor
         {
             this.RegisterSystem(new SaveSystem());
             this.RegisterSystem(new CoinUpgradeSystem());
+            this.RegisterSystem(new ExpUpgradeSystem());
         }
     }
 }
