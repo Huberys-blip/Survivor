@@ -20,10 +20,10 @@ MonoBehaviour:
     NameToFullName: []
     BindInfos:
     - TypeName: BoxCollider2D
-      PathToRoot: Axe
-      MemberName: Axe
+      PathToRoot: Knife
+      MemberName: Knife
     ScriptsFolder: Assets/Scripts/Game/Ability
-    ClassName: SimpleAxe
+    ClassName: SimpleKnife
     Namespace: Script
     MainCode: 
     DesignerCode: 
