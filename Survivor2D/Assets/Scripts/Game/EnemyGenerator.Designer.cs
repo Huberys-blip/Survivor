@@ -1,4 +1,4 @@
-// Generate Id:5ba663e1-c84f-42aa-a104-b494ef1c0d37
+// Generate Id:8c303915-e998-4e45-82d1-4612e22630b7
 using UnityEngine;
 
 namespace Script

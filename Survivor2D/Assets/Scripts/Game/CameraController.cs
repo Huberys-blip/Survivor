@@ -9,6 +9,8 @@ namespace Script
 	{
 		private Vector2 mTargerposition = Vector2.zero;
 		static CameraController Instance;
+		public static Transform LBTrans => Instance.LB;
+		public static Transform RTTrans => Instance.RT;
 		private void Awake()
 		{
 			Instance = this;

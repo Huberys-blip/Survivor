@@ -124,12 +124,19 @@ namespace ProjectSurvicor
                 PowerUpManager.Instance.Bomb.Instantiate()
                    .Position(enemy.Position())
                    .Show();
-                   return;
+                return;
             }
-              var getallexpbrandom = UnityEngine.Random.Range(0, 1f);
-               if (getallexpbrandom <= 0.3f)
+            var getallexpbrandom = UnityEngine.Random.Range(0, 1f);
+            if (getallexpbrandom <= 0.3f)
             {
                 PowerUpManager.Instance.GetAllExp.Instantiate()
+                   .Position(enemy.Position())
+                   .Show();
+            }
+             var magnetrandom = UnityEngine.Random.Range(0, 1f);
+               if (magnetrandom <= 0.3f)
+            {
+                PowerUpManager.Instance.Magnet.Instantiate()
                    .Position(enemy.Position())
                    .Show();
             }

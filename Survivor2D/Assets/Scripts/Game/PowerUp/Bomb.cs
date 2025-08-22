@@ -12,7 +12,7 @@ namespace Script
 				
 				foreach (var item in FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
 				{
-					item.Hurt(item.hp);
+					item.Hurt(item.Hp);
 				}
 				AudioKit.PlaySound("Bomb");
 				CameraController.Shake();

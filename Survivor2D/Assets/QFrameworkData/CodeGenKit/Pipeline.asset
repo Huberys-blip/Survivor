@@ -18,9 +18,27 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos: []
+    BindInfos:
+    - TypeName: Script.Exp
+      PathToRoot: Exp
+      MemberName: Exp
+    - TypeName: Script.Coin
+      PathToRoot: Coin
+      MemberName: Coin
+    - TypeName: Script.Hp
+      PathToRoot: Hp
+      MemberName: Hp
+    - TypeName: QFramework.ViewController
+      PathToRoot: Bomb
+      MemberName: Bomb
+    - TypeName: Script.GetAllExp
+      PathToRoot: GetAllExp
+      MemberName: GetAllExp
+    - TypeName: QFramework.ViewController
+      PathToRoot: Magnet
+      MemberName: Magnet
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: EnemyGenerator
+    ClassName: PowerUpManager
     Namespace: Script
     MainCode: 
     DesignerCode: 

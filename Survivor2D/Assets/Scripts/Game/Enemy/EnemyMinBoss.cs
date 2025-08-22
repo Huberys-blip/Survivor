@@ -26,7 +26,7 @@ namespace Script
 			Wait
 		}
 		public FSM<States> FSM = new();
-		public float hp = 50f;
+		public float Hp = 50f;
 		public float MoveSpeed = 2f;
 		void Start()
 		{
@@ -110,7 +110,7 @@ namespace Script
 		void Update()
 		{
 			FSM.Update();
-			if (hp <= 0)
+			if (Hp <= 0)
 			{
 				Global.GeneratePowerUp(gameObject);
 				this.DestroyGameObjGracefully();
@@ -124,16 +124,26 @@ namespace Script
 		public void Hurt(float damage)
 		{
 			if (mIgnreHurt) return;
-			FloatingTextController.Play(transform.position, damage.ToString());
+			FloatingTextController.Play(transform.position, damage.ToString("0"));
 			AudioKit.PlaySound("Hit");
 			Sprite.color = Color.red;
 			ActionKit.Delay(0.2f, () =>
 			{
 				//"简单能力".LogInfo();
-				this.hp -= damage;
+				this.Hp -= damage;
 				this.Sprite.color = Color.white;
 				mIgnreHurt = false;
 			}).Start(this);
 		}
-	}
+
+          public void SetSpeedScale(float speedScale)
+        {
+			MoveSpeed *= speedScale;
+        }
+
+        public void SetHpScale(float hpScale)
+        {
+			Hp *= hpScale;
+        }
+    }
 }

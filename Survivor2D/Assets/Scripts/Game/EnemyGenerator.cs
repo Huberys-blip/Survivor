@@ -56,15 +56,29 @@ namespace Script
 					var player = Player.Instance;
 					if (player != null)
 					{
-						var randomAngle = UnityEngine.Random.Range(0f, 360f);
-						var randomRadius = randomAngle * Mathf.Deg2Rad;
-						var direction = new Vector3(Mathf.Cos(randomRadius), Mathf.Sin(randomRadius));
-						var ganeratePos = player.transform.position + direction * 10f;
+						var xOry = RandomUtility.Choose(-1,1);
+						var pos = Vector2.zero;
+						if (xOry == -1)
+						{
+							pos.x = UnityEngine.Random.Range(CameraController.LBTrans.position.x, CameraController.RTTrans.position.x);
+							pos.y = RandomUtility.Choose(CameraController.LBTrans.position.y,CameraController.RTTrans.position.y);
+						}
+						else
+						{
+	  						pos.x = RandomUtility.Choose(CameraController.LBTrans.position.x, CameraController.RTTrans.position.x);
+							pos.y = UnityEngine.Random.Range(CameraController.LBTrans.position.y,CameraController.RTTrans.position.y);
+						}
 						if (mCurrentWave.EnemyPrefab != null)
 						{
 							mCurrentWave.EnemyPrefab.Instantiate()
-					.Position(ganeratePos)
-					.Show();
+							.Position(pos)
+							.Self((self=>
+							{
+								var enemy = self.GetComponent<IEnemy>();
+								enemy.SetSpeedScale(mCurrentWave.SpeedScale);
+								enemy.SetHpScale(mCurrentWave.HpScale);
+							}))
+							.Show();
 						}
 
 					}
