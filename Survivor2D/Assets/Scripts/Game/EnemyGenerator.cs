@@ -6,35 +6,34 @@ using ProjectSurvicor;
 
 namespace Script
 {
-	[Serializable]
-	public class EnemyWave
-	{
-		public float GenerateDuration;
-		public GameObject EnemyPrefab;
-		public int Seconds = 10;
-	}
 	public partial class EnemyGenerator : ViewController
 	{
+		[SerializeField]
+		public LevelConfig Config;
 		private float mCurrenGenerateSecond = 0f;
 		private float mCurrentWaveSeconds = 0f;
 		public static BindableProperty<int> EnemyCount = new BindableProperty<int>(0);
-		public List<EnemyWave> enemyWaves = new List<EnemyWave>();
 		/// <summary>
 		/// 队列化敌人波次
 		/// </summary>
 		public Queue<EnemyWave> enemyWavesQueue = new Queue<EnemyWave>();
 		public int WaveCont = 0;
-		public bool LastWave => WaveCont == enemyWaves.Count;
+		private int mTotalCount = 0;
+		public bool LastWave => WaveCont == mTotalCount;
 		public EnemyWave CurrentWave => mCurrentWave;
 		private void Start()
 		{
 			Global.ResetData();
-			foreach (var item in enemyWaves)
+			foreach (var group in Config.enemyWaveGroups)
 			{
-				enemyWavesQueue.Enqueue(item);
+				foreach (var wave in group.Waves)
+				{
+					enemyWavesQueue.Enqueue(wave);
+					mTotalCount++;
+				}
 			}
 		}
-		public EnemyWave mCurrentWave = null;
+		private EnemyWave mCurrentWave = null;
 		private void Update()
 		{
 			if (mCurrentWave == null)
