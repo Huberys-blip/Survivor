@@ -14,18 +14,16 @@ namespace Script
 		protected override void OnInit(IUIData uiData = null)
 		{
 			mData = uiData as UIGamePasspanelData ?? new UIGamePasspanelData();
-			// please add init code here
-
 			Time.timeScale = 0;
-			ActionKit.OnUpdate.Register(() =>
-			{
-				if (Input.GetKeyDown(KeyCode.Space))
-				{
-					Global.ResetData();
-					this.CloseSelf();
-					SceneManager.LoadScene("Game");
-				}
-			}).UnRegisterWhenGameObjectDestroyed(gameObject);
+			// ActionKit.OnUpdate.Register(() =>
+			// {
+			// 	if (Input.GetKeyDown(KeyCode.Space))
+			// 	{
+			// 		Global.ResetData();
+			// 		this.CloseSelf();
+			// 		SceneManager.LoadScene("Game");
+			// 	}
+			// }).UnRegisterWhenGameObjectDestroyed(gameObject);
 			BtnBackToStart.onClick.AddListener(() =>
 		{
 			this.CloseSelf();

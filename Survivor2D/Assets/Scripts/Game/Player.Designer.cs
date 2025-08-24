@@ -1,4 +1,4 @@
-// Generate Id:7984a3e8-9165-4e77-9922-03b69c00674d
+// Generate Id:b281c41f-ef8a-44cb-9b4e-02acd26f3630
 using UnityEngine;
 
 namespace Script
@@ -8,6 +8,8 @@ namespace Script
 		public SpriteRenderer Sprite;
 		
 		public CircleCollider2D HitBox;
+		
+		public UnityEngine.UI.Image HpValue;
 		
 		public UnityEngine.Rigidbody2D MyRigidbody2D;
 		

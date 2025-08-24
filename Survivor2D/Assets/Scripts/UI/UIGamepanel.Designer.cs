@@ -5,15 +5,11 @@ using QFramework;
 
 namespace Script
 {
-	// Generate Id:374a0570-8d48-4139-bd31-168286d5fe32
+	// Generate Id:1c74e98b-2b4a-476a-ad05-51fba872f431
 	public partial class UIGamepanel
 	{
 		public const string Name = "UIGamepanel";
 		
-		[SerializeField]
-		public UnityEngine.UI.Text HpText;
-		[SerializeField]
-		public UnityEngine.UI.Text ExpText;
 		[SerializeField]
 		public UnityEngine.UI.Text LevelText;
 		[SerializeField]
@@ -24,18 +20,19 @@ namespace Script
 		public UnityEngine.UI.Text CionText;
 		[SerializeField]
 		public ExpUpgradePanel ExpUpgradePanel;
+		[SerializeField]
+		public UnityEngine.UI.Image ExpValue;
 		
 		private UIGamepanelData mPrivateData = null;
 		
 		protected override void ClearUIComponents()
 		{
-			HpText = null;
-			ExpText = null;
 			LevelText = null;
 			TimeText = null;
 			EnemyCountText = null;
 			CionText = null;
 			ExpUpgradePanel = null;
+			ExpValue = null;
 			
 			mData = null;
 		}

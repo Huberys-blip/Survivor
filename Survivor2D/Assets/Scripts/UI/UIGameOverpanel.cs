@@ -14,16 +14,15 @@ namespace Script
 		protected override void OnInit(IUIData uiData = null)
 		{
 			mData = uiData as UIGameOverpanelData ?? new UIGameOverpanelData();
-			// please add init code here
-			ActionKit.OnUpdate.Register(() =>
-			{
-				if (Input.GetKeyDown(KeyCode.Space))
-				{
-					Global.ResetData();
-					this.CloseSelf();
-					SceneManager.LoadScene("Game");
-				}
-			}).UnRegisterWhenGameObjectDestroyed(gameObject);
+			// ActionKit.OnUpdate.Register(() =>
+			// {
+			// 	if (Input.GetKeyDown(KeyCode.Space))
+			// 	{
+			// 		Global.ResetData();
+			// 		this.CloseSelf();
+			// 		SceneManager.LoadScene("Game");
+			// 	}
+			// }).UnRegisterWhenGameObjectDestroyed(gameObject);
 			BtnBackToStart.onClick.AddListener(() =>
 			{
 				this.CloseSelf();

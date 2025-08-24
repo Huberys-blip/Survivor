@@ -19,26 +19,17 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: Script.Exp
-      PathToRoot: Exp
-      MemberName: Exp
-    - TypeName: Script.Coin
-      PathToRoot: Coin
-      MemberName: Coin
-    - TypeName: Script.Hp
-      PathToRoot: Hp
-      MemberName: Hp
-    - TypeName: QFramework.ViewController
-      PathToRoot: Bomb
-      MemberName: Bomb
-    - TypeName: Script.GetAllExp
-      PathToRoot: GetAllExp
-      MemberName: GetAllExp
-    - TypeName: QFramework.ViewController
-      PathToRoot: Magnet
-      MemberName: Magnet
+    - TypeName: SpriteRenderer
+      PathToRoot: Sprite
+      MemberName: Sprite
+    - TypeName: CircleCollider2D
+      PathToRoot: HitBox
+      MemberName: HitBox
+    - TypeName: UnityEngine.UI.Image
+      PathToRoot: Canvas/HpValue
+      MemberName: HpValue
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: PowerUpManager
+    ClassName: Player
     Namespace: Script
     MainCode: 
     DesignerCode: 

@@ -17,15 +17,15 @@ namespace Script
         {
             Instance = null;
         }
-        void Start()
+		void Start()
 		{
 			//"hello QFramework".LogInfo();
-			HitBox.OnTriggerEnter2DEvent(Collider2D=>
+			HitBox.OnTriggerEnter2DEvent(Collider2D =>
 			{
 				var hitBox = Collider2D.GetComponent<HitBox>();
-				if (hitBox!= null)
+				if (hitBox != null)
 				{
-						if (hitBox.Owner.CompareTag("Enemy"))
+					if (hitBox.Owner.CompareTag("Enemy"))
 					{
 						Global.hp.Value--;
 
@@ -42,7 +42,18 @@ namespace Script
 
 					}
 				}
-			
+			}).UnRegisterWhenGameObjectDestroyed(gameObject);
+			void UpdateHp()
+			{
+					HpValue.fillAmount = Global.hp.Value / (float)Global.MaxHp.Value;
+			}
+			Global.hp.RegisterWithInitValue(hp =>
+			{
+				UpdateHp();
+			}).UnRegisterWhenGameObjectDestroyed(gameObject);
+			Global.MaxHp.RegisterWithInitValue(maxhp=>
+			{
+				UpdateHp();
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 		}
 		void Update()

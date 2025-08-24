@@ -14,23 +14,17 @@ namespace Script
 		protected override void OnInit(IUIData uiData = null)
 		{
 			mData = uiData as UIGamepanelData ?? new UIGamepanelData();
-			// please add init code here
-			Global.hp.RegisterWithInitValue(hp =>
+			Global.Coin.RegisterWithInitValue(coin =>
 			{
-				HpText.text = "生命值" + $"{hp}/{Global.MaxHp.Value}";
+				CionText.text = "金币" + coin;
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
-			Global.MaxHp.RegisterWithInitValue(maxHp =>
-			{
-				HpText.text = "生命值" + $"{Global.hp.Value}/{maxHp}";
-			}).UnRegisterWhenGameObjectDestroyed(gameObject);
-
 			EnemyGenerator.EnemyCount.RegisterWithInitValue(enemyCount =>
 			{
 				EnemyCountText.text = "敌人" + enemyCount;
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 			Global.Exp.RegisterWithInitValue(exp =>
 			{
-				ExpText.text = "经验值" + exp + "/" + Global.ExpToNextLevel();
+				ExpValue.fillAmount = exp/(float)Global.ExpToNextLevel();
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
 			Global.Level.RegisterWithInitValue(level =>
