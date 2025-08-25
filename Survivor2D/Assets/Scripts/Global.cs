@@ -12,43 +12,80 @@ namespace ProjectSurvicor
         /// <summary>
         /// 主角hp
         /// </summary>
-        public static BindableProperty<int> hp = new BindableProperty<int>(3);
+        public static BindableProperty<int> hp = new(3);
         /// <summary>
         /// 主角最大hp
         /// </summary>
-        public static BindableProperty<int> MaxHp = new BindableProperty<int>(3);
+        public static BindableProperty<int> MaxHp = new(3);
         /// <summary>
         /// 经验值
         /// </summary>
-        public static BindableProperty<int> Exp = new BindableProperty<int>(0);
+        public static BindableProperty<int> Exp = new(0);
         /// <summary>
         /// 金币
         /// </summary>
-        public static BindableProperty<int> Coin = new BindableProperty<int>(0);
+        public static BindableProperty<int> Coin = new(0);
         /// <summary>
         /// 等级
         /// </summary>
-        public static BindableProperty<int> Level = new BindableProperty<int>(1);
+        public static BindableProperty<int> Level = new(1);
         /// <summary>
         /// 简单能力伤害
         /// </summary>
-        public static BindableProperty<float> SimpleAbilityDamage = new BindableProperty<float>(1f);
+        public static BindableProperty<float> SimpleAbilityDamage = new(Config.InitSimpleSwordDamage);
         /// <summary>
         /// 简单能力间隔
         /// </summary>
-        public static BindableProperty<float> SimpleAbilityDuration = new BindableProperty<float>(1.5f);
+        public static BindableProperty<float> SimpleAbilityDuration = new(Config.InitSimpleSwordDuration);
+        /// <summary>
+        /// 简单能力攻击数量
+        /// </summary>
+        public static BindableProperty<int> SimpleSwordConut = new(Config.InitSimpleSwordCount);
+        /// <summary>
+        /// 范围
+        /// </summary>
+        public static BindableProperty<float> SimpleSwordRange= new(Config.InitSimpleSwordRange);
+        /// <summary>
+        /// 小刀伤害
+        /// </summary>
+        public static BindableProperty<float> SimpleKnifeDamage = new(Config.InitSimpleKnifeDamage);
+        /// <summary>
+        /// 小刀间隔
+        /// </summary>
+        public static BindableProperty<float> SimpleKnifeDuration = new(Config.InitSimpleKnifeDuration);
+        /// <summary>
+        /// 小刀数量
+        /// </summary>
+        public static BindableProperty<int> SimpleKnifeCount = new(Config.InitSimpleKnifeCount);
+        /// <summary>
+        ///  守护伤害
+        /// </summary>
+        public static BindableProperty<float> RotateSwordDamage = new(Config.InitRotateSwordDamage);
+        /// <summary>
+        ///  守护数量
+        /// </summary>
+        public static BindableProperty<int> RotateSwordCount = new(Config.InitRotateSwordCount);
+        /// <summary>
+        ///  守护速度
+        /// </summary>
+        public static BindableProperty<float> RotateSwordSpeed = new(Config.InitRotateSwordSpeed);
+        /// <summary>
+        ///  守护范围
+        /// </summary>
+        public static BindableProperty<float> RotateSwordRange = new(Config.InitRotateSwordRange);
+     
         /// <summary>
         /// 间隔时间
         /// </summary>
-        public static BindableProperty<float> CuhrrentSeconds = new BindableProperty<float>(0f);
+        public static BindableProperty<float> CuhrrentSeconds = new(0f);
         /// <summary>
         /// 经验掉落概率
         /// </summary>
-        public static BindableProperty<float> ExpPercent = new BindableProperty<float>(0.4f);
+        public static BindableProperty<float> ExpPercent = new(0.4f);
         /// <summary>
         /// 金币掉落概率
         /// </summary>
-        public static BindableProperty<float> CoinPercent = new BindableProperty<float>(0.4f);
+        public static BindableProperty<float> CoinPercent = new(0.4f);
         [RuntimeInitializeOnLoadMethod]
         public static void Autoinit()
         {
@@ -79,11 +116,20 @@ namespace ProjectSurvicor
             hp.Value = MaxHp.Value;
             Exp.Value = 0;
             Level.Value = 1;
-            SimpleAbilityDamage.Value = 1f;
-            SimpleAbilityDuration.Value = 1.5f;
+            SimpleAbilityDamage.Value = Config.InitSimpleSwordDamage;
+            SimpleAbilityDuration.Value = Config.InitSimpleSwordDuration;
+            SimpleSwordConut.Value = Config.InitSimpleSwordCount;
             CuhrrentSeconds.Value = 0f;
+            SimpleSwordRange.Value = Config.InitSimpleSwordRange;
             EnemyGenerator.EnemyCount.Value = 0;
             Interface.GetSystem<ExpUpgradeSystem>().ResetData();
+            SimpleKnifeDamage.Value = Config.InitSimpleKnifeDamage;
+            SimpleKnifeDuration.Value = Config.InitSimpleKnifeDuration;
+            SimpleKnifeCount.Value = Config.InitSimpleKnifeCount;
+            RotateSwordDamage.Value = Config.InitRotateSwordDamage;
+            RotateSwordCount.Value = Config.InitRotateSwordCount;
+            RotateSwordSpeed.Value = Config.InitRotateSwordSpeed;
+            RotateSwordRange.Value = Config.InitRotateSwordRange;
         }
         public static int ExpToNextLevel()
         {

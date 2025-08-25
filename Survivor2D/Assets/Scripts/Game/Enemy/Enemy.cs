@@ -20,15 +20,19 @@ namespace Script
 		}
 		void FixedUpdate()
 		{
-			if (Player.Instance)
+			if (!mIgnreHurt)
 			{
-				var direction = (Player.Instance.transform.position - transform.position).normalized;
-				SelfRigidbody2D.velocity = direction * MoveSpeed;
+				if (Player.Instance)
+				{
+					var direction = (Player.Instance.transform.position - transform.position).normalized;
+					SelfRigidbody2D.velocity = direction * MoveSpeed;
+				}
+				else
+				{
+					SelfRigidbody2D.velocity = Vector2.zero;
+				}
 			}
-			else
-			{
-				SelfRigidbody2D.velocity = Vector2.zero;
-			}
+			
         }
         void Update()
 		{	
@@ -44,6 +48,8 @@ namespace Script
 		public void Hurt(float damage)
 		{
 			if (mIgnreHurt)return;
+			mIgnreHurt = true;
+			SelfRigidbody2D.velocity = Vector2.zero;
 			FloatingTextController.Play(transform.position, damage.ToString("0"));
 			AudioKit.PlaySound("Hit");
 			Sprite.color = Color.red;

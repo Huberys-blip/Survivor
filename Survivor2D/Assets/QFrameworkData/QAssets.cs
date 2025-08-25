@@ -25,6 +25,7 @@ namespace QAssetBundle
         public const string HIT = "HIt";
         public const string HP = "Hp";
         public const string HUIT = "Huit";
+        public const string KNIFE = "knife";
         public const string LEVELUP = "LevelUp";
     }
     public class Uigameoverpanel_prefab

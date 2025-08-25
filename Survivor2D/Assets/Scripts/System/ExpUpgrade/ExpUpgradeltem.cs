@@ -9,9 +9,9 @@ namespace ProjectSurvicor
         public EasyEvent OnChanged = new();
         public bool UpgradeFinish { get; set; } = false;
         public string Key { get; private set; }
-        public string Descriptopn => mDescriprionFactory(CurrentLeve.Value);
+        public string Descriptopn => mDescriprionFactory(CurrentLeve.Value+1);
         public int MaxLevel { get; private set; }
-        public BindableProperty<int> CurrentLeve =new (1);
+        public BindableProperty<int> CurrentLeve =new (0);
         public BindableProperty<bool> Visible = new();
         private Func<int, string> mDescriprionFactory;
         public void Upgrade()
