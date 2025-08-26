@@ -45,12 +45,12 @@ namespace Script
 			}
 		}
 		private bool mIgnreHurt = false;
-		public void Hurt(float damage)
+		public void Hurt(float damage,bool force=false,bool critical =false)
 		{
 			if (mIgnreHurt)return;
 			mIgnreHurt = true;
 			SelfRigidbody2D.velocity = Vector2.zero;
-			FloatingTextController.Play(transform.position, damage.ToString("0"));
+			FloatingTextController.Play(transform.position, damage.ToString("0"),critical);
 			AudioKit.PlaySound("Hit");
 			Sprite.color = Color.red;
 			ActionKit.Delay(0.2f, () =>

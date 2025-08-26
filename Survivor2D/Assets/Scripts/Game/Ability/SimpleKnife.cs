@@ -20,7 +20,7 @@ namespace Script
 			{
 				var enemies = FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)
 				.OrderBy(enemy => Player.Instance.Distance2D(enemy))
-				.Take(Global.SimpleKnifeCount.Value);
+				.Take(Global.SimpleKnifeCount.Value+Global.AdditionalFlyThingCount.Value);
 				var i = 0;
 				foreach (var enemy in enemies)
 				{
@@ -53,7 +53,8 @@ namespace Script
 								{
 									if (hurtbox.Owner.CompareTag("Enemy"))
 									{
-										hurtbox.Owner.GetComponent<Enemy>().Hurt(Global.SimpleKnifeDamage.Value);
+										DamageSystem.CalculatDamage(Global.SimpleKnifeDamage.Value,hurtbox.Owner.GetComponent<Enemy>());
+										//hurtbox.Owner.GetComponent<Enemy>().Hurt(Global.SimpleKnifeDamage.Value);
 										// SelfCache.DestroyGameObjGracefully();
 									}
 								}

@@ -12,12 +12,9 @@ namespace Script
 		void Start()
 		{
 			Sword.Hide();
-			Global.RotateSwordCount.RegisterWithInitValue(count =>
+			void CreateSword()
 			{
-				var toAddCount = count - mSwords.Count;
-				for (int i = 0; i < toAddCount; i++)
-				{
-					mSwords.Add(Sword.InstantiateWithParent(this)
+				mSwords.Add(Sword.InstantiateWithParent(this)
 					.Self(self =>
 					{
 						self.OnTriggerEnter2DEvent(collider =>
@@ -27,23 +24,32 @@ namespace Script
 							{
 								if (hurtbox.Owner.CompareTag("Enemy"))
 								{
-									hurtbox.Owner.GetComponent<Enemy>().Hurt(Global.RotateSwordDamage.Value);
+									DamageSystem.CalculatDamage(Global.RotateSwordDamage.Value, hurtbox.Owner.GetComponent<Enemy>());
+									//hurtbox.Owner.GetComponent<Enemy>().Hurt(Global.RotateSwordDamage.Value);
 									if (Random.Range(0, 1.0f) < 0.5f)
 									{
-										collider.attachedRigidbody.velocity = collider.NormalizedDirection2DFrom(self)*5+collider.NormalizedDirection2DFrom(Player.Instance)*10;
+										collider.attachedRigidbody.velocity = collider.NormalizedDirection2DFrom(self) * 5 + collider.NormalizedDirection2DFrom(Player.Instance) * 10;
 									}
 								}
 							}
 						}).UnRegisterWhenGameObjectDestroyed(self);
 					}).Show());
+			}
+			void CreateSwords()
+			{
+				var toAddCount = Global.RotateSwordCount.Value + Global.AdditionalFlyThingCount.Value - mSwords.Count;
+				for (int i = 0; i < toAddCount; i++)
+				{
+					CreateSword();
 				}
 				UPdateCirclePos();
-			}).UnRegisterWhenGameObjectDestroyed(gameObject);
+			}
+			Global.RotateSwordCount.Or(Global.AdditionalFlyThingCount).Register(CreateSwords).UnRegisterWhenGameObjectDestroyed(gameObject);
 			Global.RotateSwordRange.Register((range) =>
 			{
 				UPdateCirclePos();
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
-
+			CreateSwords();
 		}
 		void UPdateCirclePos()
 		{

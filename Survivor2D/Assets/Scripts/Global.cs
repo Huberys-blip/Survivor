@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using QFramework;
 using Script;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 namespace ProjectSurvicor
 {
     public class Global:Architecture<Global>
     {
+        
         /// <summary>
         /// 主角hp
         /// </summary>
@@ -30,6 +32,10 @@ namespace ProjectSurvicor
         /// </summary>
         public static BindableProperty<int> Level = new(1);
         /// <summary>
+        /// 简单能力开启
+        /// </summary>
+        public static BindableProperty<bool> SimpleSwordUnlocked = new(false);
+        /// <summary>
         /// 简单能力伤害
         /// </summary>
         public static BindableProperty<float> SimpleAbilityDamage = new(Config.InitSimpleSwordDamage);
@@ -46,6 +52,10 @@ namespace ProjectSurvicor
         /// </summary>
         public static BindableProperty<float> SimpleSwordRange= new(Config.InitSimpleSwordRange);
         /// <summary>
+        /// 小刀能力开启
+        /// </summary>
+        public static BindableProperty<bool> SimpleKnifeUnlocked = new(false);
+        /// <summary>
         /// 小刀伤害
         /// </summary>
         public static BindableProperty<float> SimpleKnifeDamage = new(Config.InitSimpleKnifeDamage);
@@ -57,6 +67,11 @@ namespace ProjectSurvicor
         /// 小刀数量
         /// </summary>
         public static BindableProperty<int> SimpleKnifeCount = new(Config.InitSimpleKnifeCount);
+
+        /// <summary>
+        /// 守护能力开启
+        /// </summary>
+        public static BindableProperty<bool> RotateSwordUnlocked = new(false);
         /// <summary>
         ///  守护伤害
         /// </summary>
@@ -73,6 +88,22 @@ namespace ProjectSurvicor
         ///  守护范围
         /// </summary>
         public static BindableProperty<float> RotateSwordRange = new(Config.InitRotateSwordRange);
+          /// <summary>
+        /// 篮球能力开启
+        /// </summary>
+        public static BindableProperty<bool> BasketBallUnlocked = new(false);
+        /// <summary>
+        /// 篮球伤害
+        /// </summary>
+        public static BindableProperty<float> BasketBallDamage = new(Config.InitBasketBallDamage);
+        /// <summary>
+        /// 篮球速度
+        /// </summary>
+        public static BindableProperty<float> BasketBallSpeed  = new(Config.InitBasketBallSpeed);
+        /// <summary>
+        /// 篮球数量
+        /// </summary>
+        public static BindableProperty<int> BasketBallCount  = new(Config.InitBasketBallCount);
      
         /// <summary>
         /// 间隔时间
@@ -86,6 +117,17 @@ namespace ProjectSurvicor
         /// 金币掉落概率
         /// </summary>
         public static BindableProperty<float> CoinPercent = new(0.4f);
+
+        public static BindableProperty<bool> BombUnlocked = new(false);
+        public static BindableProperty<float> BombDamage = new(Config.InitBombDamage);
+        public static BindableProperty<float> BombPercent = new(Config.InitBombPercent);
+        public static BindableProperty<float> CriticalRate = new(Config.InitCriticalRate);
+        public static BindableProperty<float> DamageRate = new(1);
+        public static BindableProperty<int> AdditionalFlyThingCount= new(0);
+        public static BindableProperty<float> MovementSpeedRate= new(1);
+        public static BindableProperty<float> CollectableArea= new(Config.InitCollectableArea);
+        public static BindableProperty<float> AdditonalExpercent= new(0);
+
         [RuntimeInitializeOnLoadMethod]
         public static void Autoinit()
         {
@@ -113,16 +155,21 @@ namespace ProjectSurvicor
         }
         public static void ResetData()
         {
+            AdditonalExpercent.Value = 0;
+            CollectableArea.Value = Config.InitCollectableArea;
+            MovementSpeedRate.Value=1;
             hp.Value = MaxHp.Value;
+            AdditionalFlyThingCount.Value = 0;
             Exp.Value = 0;
             Level.Value = 1;
-            SimpleAbilityDamage.Value = Config.InitSimpleSwordDamage;
-            SimpleAbilityDuration.Value = Config.InitSimpleSwordDuration;
-            SimpleSwordConut.Value = Config.InitSimpleSwordCount;
+            DamageRate.Value = 1f;
             CuhrrentSeconds.Value = 0f;
             SimpleSwordRange.Value = Config.InitSimpleSwordRange;
             EnemyGenerator.EnemyCount.Value = 0;
             Interface.GetSystem<ExpUpgradeSystem>().ResetData();
+            SimpleAbilityDamage.Value = Config.InitSimpleSwordDamage;
+            SimpleAbilityDuration.Value = Config.InitSimpleSwordDuration;
+            SimpleSwordConut.Value = Config.InitSimpleSwordCount;
             SimpleKnifeDamage.Value = Config.InitSimpleKnifeDamage;
             SimpleKnifeDuration.Value = Config.InitSimpleKnifeDuration;
             SimpleKnifeCount.Value = Config.InitSimpleKnifeCount;
@@ -130,6 +177,17 @@ namespace ProjectSurvicor
             RotateSwordCount.Value = Config.InitRotateSwordCount;
             RotateSwordSpeed.Value = Config.InitRotateSwordSpeed;
             RotateSwordRange.Value = Config.InitRotateSwordRange;
+            BasketBallDamage.Value = Config.InitBasketBallDamage;
+            BasketBallSpeed.Value = Config.InitBasketBallSpeed;
+            BasketBallCount.Value = Config.InitBasketBallCount;
+            SimpleSwordUnlocked.Value = false;
+            SimpleKnifeUnlocked.Value = false;
+            RotateSwordUnlocked.Value = false;
+            BasketBallUnlocked.Value = false;
+            BombUnlocked.Value = false;
+            BombDamage.Value = Config.InitBombDamage;
+            BombPercent.Value = Config.InitBombPercent;
+            CriticalRate.Value = Config.InitCriticalRate;
         }
         public static int ExpToNextLevel()
         {
@@ -141,7 +199,7 @@ namespace ProjectSurvicor
         public static void GeneratePowerUp(GameObject enemy)
         {
             var exprandom = UnityEngine.Random.Range(0, 1f);
-            if (exprandom <= ExpPercent.Value)
+            if (exprandom <= ExpPercent.Value+AdditonalExpercent.Value)
             {
                 PowerUpManager.Instance.Exp.Instantiate()
                     .Position(enemy.Position())
@@ -164,14 +222,18 @@ namespace ProjectSurvicor
                    .Show();
                 return;
             }
-            var bombrandom = UnityEngine.Random.Range(0, 1f);
-            if (bombrandom <= 0.3f)
-            {
-                PowerUpManager.Instance.Bomb.Instantiate()
-                   .Position(enemy.Position())
-                   .Show();
-                return;
+            if (BombUnlocked.Value)
+             {
+                var bombrandom = UnityEngine.Random.Range(0, 1f);
+                if (bombrandom <= BombPercent.Value)
+                {
+                    PowerUpManager.Instance.Bomb.Instantiate()
+                    .Position(enemy.Position())
+                    .Show();
+                    return;
+                 }
             }
+          
             var getallexpbrandom = UnityEngine.Random.Range(0, 1f);
             if (getallexpbrandom <= 0.3f)
             {

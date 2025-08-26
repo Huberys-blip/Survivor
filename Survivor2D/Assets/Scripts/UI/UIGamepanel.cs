@@ -11,6 +11,7 @@ namespace Script
 	}
 	public partial class UIGamepanel : UIPanel, IController
 	{
+		public static EasyEvent FlashScreen = new();
 		protected override void OnInit(IUIData uiData = null)
 		{
 			mData = uiData as UIGamepanelData ?? new UIGamepanelData();
@@ -24,7 +25,7 @@ namespace Script
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 			Global.Exp.RegisterWithInitValue(exp =>
 			{
-				ExpValue.fillAmount = exp/(float)Global.ExpToNextLevel();
+				ExpValue.fillAmount = exp / (float)Global.ExpToNextLevel();
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
 			Global.Level.RegisterWithInitValue(level =>
@@ -60,7 +61,7 @@ namespace Script
 				}
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
-			
+
 			var enemyGenerator = FindObjectOfType<EnemyGenerator>();
 			ActionKit.OnUpdate.Register(() =>
 			{
@@ -71,12 +72,24 @@ namespace Script
 					UIKit.OpenPanel<UIGamePasspanel>();
 				}
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
-			
+
 			Global.Coin.Register(coin =>
 			{
 				PlayerPrefs.SetInt("coin", coin);
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 			this.GetSystem<CoinUpgradeSystem>().Say();
+			FlashScreen.Register(() =>
+			{
+				ActionKit.Sequence()
+				.Lerp(0, 0.5f, 0.1f, alpha =>
+				{
+					ScreenColor.ColorAlpha(alpha);
+				})
+				.Lerp(0.5f, 0, 0.2f, alpha =>
+				{
+					ScreenColor.ColorAlpha(alpha);
+				},()=>ScreenColor.ColorAlpha(0)).Start(this);
+			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 		}
 
 		protected override void OnOpen(IUIData uiData = null)

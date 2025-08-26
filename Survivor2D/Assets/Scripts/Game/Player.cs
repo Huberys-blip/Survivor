@@ -60,7 +60,7 @@ namespace Script
 		{
 			var horizontal = Input.GetAxisRaw("Horizontal");
 			var vertical = Input.GetAxisRaw("Vertical");
-			var targetVelocity = new Vector2(horizontal, vertical).normalized * MoveSpeed;
+			var targetVelocity = new Vector2(horizontal, vertical).normalized *( MoveSpeed*Global.MovementSpeedRate.Value);
 			MyRigidbody2D.velocity = Vector2.Lerp(MyRigidbody2D.velocity, targetVelocity,1-Mathf.Exp(-Time.deltaTime * 5));
 		
 		}

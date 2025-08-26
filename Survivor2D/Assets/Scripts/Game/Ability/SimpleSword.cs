@@ -21,7 +21,7 @@ namespace Script
 				var enemies = FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 				foreach (var enemy in enemies.OrderBy(e => e.Direction2DFrom(Player.Instance).magnitude)
 				.Where(e => e.Direction2DFrom(Player.Instance).magnitude < Global.SimpleSwordRange.Value)
-				.Take(Global.SimpleSwordConut.Value))
+				.Take(Global.SimpleSwordConut.Value+Global.AdditionalFlyThingCount.Value))
 				{
 					
 						Sword.Instantiate().Position(enemy.Position() + Vector3.left * 0.25f)
@@ -38,7 +38,8 @@ namespace Script
 									{
 										if (enemy)
 										{
-											enemy.Hurt(Global.SimpleAbilityDamage.Value);
+											DamageSystem.CalculatDamage(Global.SimpleAbilityDamage.Value,hurtBox.Owner.GetComponent<Enemy>());
+											//enemy.Hurt(Global.SimpleAbilityDamage.Value);
 										}
 										
 									}

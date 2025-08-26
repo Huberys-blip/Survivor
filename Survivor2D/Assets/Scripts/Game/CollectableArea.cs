@@ -1,5 +1,6 @@
 using UnityEngine;
 using QFramework;
+using ProjectSurvicor;
 
 namespace Script
 {
@@ -7,7 +8,10 @@ namespace Script
 	{
 		void Start()
 		{
-			// Code Here
+			Global.CollectableArea.RegisterWithInitValue(range =>
+			{
+				GetComponent<CircleCollider2D>().radius = range;
+			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 		}
 	}
 }

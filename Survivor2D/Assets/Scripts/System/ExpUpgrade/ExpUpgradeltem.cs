@@ -6,6 +6,14 @@ namespace ProjectSurvicor
 {
     public class ExpUpgradeltem
     {
+        public ExpUpgradeltem(bool isweappn)
+        {
+            IsWeapon = isweappn;
+        }
+        /// <summary>
+        /// 是否是武器
+        /// </summary>
+        public bool IsWeapon = false;
         public EasyEvent OnChanged = new();
         public bool UpgradeFinish { get; set; } = false;
         public string Key { get; private set; }

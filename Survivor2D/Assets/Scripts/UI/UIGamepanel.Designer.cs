@@ -5,7 +5,7 @@ using QFramework;
 
 namespace Script
 {
-	// Generate Id:1c74e98b-2b4a-476a-ad05-51fba872f431
+	// Generate Id:ee5a4db0-f45b-464c-a5db-2482a528aaab
 	public partial class UIGamepanel
 	{
 		public const string Name = "UIGamepanel";
@@ -22,6 +22,8 @@ namespace Script
 		public ExpUpgradePanel ExpUpgradePanel;
 		[SerializeField]
 		public UnityEngine.UI.Image ExpValue;
+		[SerializeField]
+		public UnityEngine.UI.Image ScreenColor;
 		
 		private UIGamepanelData mPrivateData = null;
 		
@@ -33,6 +35,7 @@ namespace Script
 			CionText = null;
 			ExpUpgradePanel = null;
 			ExpValue = null;
+			ScreenColor = null;
 			
 			mData = null;
 		}

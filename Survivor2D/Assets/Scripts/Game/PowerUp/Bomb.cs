@@ -15,6 +15,7 @@ namespace Script
 					item.Hurt(item.Hp);
 				}
 				AudioKit.PlaySound("Bomb");
+				UIGamepanel.FlashScreen.Trigger();
 				CameraController.Shake();
 				this.DestroyGameObjGracefully();
 			}

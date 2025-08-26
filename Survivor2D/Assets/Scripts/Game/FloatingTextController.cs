@@ -18,7 +18,7 @@ namespace Script
 		{
 			FloatingText.Hide();
 		}
-		public static void Play(Vector2 position, string text)
+		public static void Play(Vector2 position, string text,bool critical =false)
 		{
 			Instance.FloatingText.InstantiateWithParent(Instance.transform).PositionX(position.x).PositionY(position.y).Self(f =>
 			{
@@ -26,6 +26,10 @@ namespace Script
 				var textTrans = f.transform.Find("Text");
 				var textComop = textTrans.GetComponent<UnityEngine.UI.Text>();
 				textComop.text = text;
+				if (critical)
+				{
+					textComop.color = Color.red;
+				}
 				ActionKit.Sequence().Lerp(0,0.5f,0.5f,(p)=>
 				{
 					f.PositionY(positionY + p*0.25f);
