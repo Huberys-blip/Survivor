@@ -1,9 +1,11 @@
-// Generate Id:24f01167-fced-4717-84e0-89d7a77f75b2
+// Generate Id:0cbf054d-07ec-42ce-9c0d-c4b6d1d61801
 using UnityEngine;
 
 namespace Script
 {
 	public partial class GetAllExp
 	{
+		public UnityEngine.CircleCollider2D SelfCircleCollider2D;
+		
 	}
 }

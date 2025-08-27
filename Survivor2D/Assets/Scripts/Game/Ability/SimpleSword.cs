@@ -18,10 +18,15 @@ namespace Script
 			if (mCurrentSeconds >= Global.SimpleAbilityDuration.Value)
 			{
 				mCurrentSeconds = 0f;
+
+				var countTimes = Global.SuperSword.Value ? 2 : 1;
+				var damageTimes = Global.SuperSword.Value ? Random.Range(2,3+1):1;
+				var distanceTimes =Global. SuperSword.Value ? 2 : 1;
+
 				var enemies = FindObjectsByType<Enemy>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 				foreach (var enemy in enemies.OrderBy(e => e.Direction2DFrom(Player.Instance).magnitude)
-				.Where(e => e.Direction2DFrom(Player.Instance).magnitude < Global.SimpleSwordRange.Value)
-				.Take(Global.SimpleSwordConut.Value+Global.AdditionalFlyThingCount.Value))
+				.Where(e => e.Direction2DFrom(Player.Instance).magnitude < Global.SimpleSwordRange.Value*distanceTimes)
+				.Take((Global.SimpleSwordConut.Value+Global.AdditionalFlyThingCount.Value)*countTimes))
 				{
 					
 						Sword.Instantiate().Position(enemy.Position() + Vector3.left * 0.25f)
@@ -38,8 +43,7 @@ namespace Script
 									{
 										if (enemy)
 										{
-											DamageSystem.CalculatDamage(Global.SimpleAbilityDamage.Value,hurtBox.Owner.GetComponent<Enemy>());
-											//enemy.Hurt(Global.SimpleAbilityDamage.Value);
+											DamageSystem.CalculatDamage(Global.SimpleAbilityDamage.Value*damageTimes,hurtBox.Owner.GetComponent<Enemy>());
 										}
 										
 									}

@@ -1,10 +1,12 @@
 using UnityEngine;
 using QFramework;
+using ProjectSurvicor;
 
 namespace Script
 {
-	public partial class GetAllExp : ViewController
+	public partial class GetAllExp : GamePlayObject
 	{
+		protected override Collider2D Collider2D => SelfCircleCollider2D;
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.GetComponent<CollectableArea>())

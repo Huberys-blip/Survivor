@@ -1,9 +1,11 @@
-// Generate Id:2cad69ad-af39-484d-9ac1-fe4f84d3c39a
+// Generate Id:a1c0e0c8-c3b3-4e52-873b-817f1c2a69a6
 using UnityEngine;
 
 namespace Script
 {
 	public partial class Hp
 	{
+		public UnityEngine.CircleCollider2D SelfCircleCollider2D;
+		
 	}
 }

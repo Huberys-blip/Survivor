@@ -9,6 +9,29 @@ namespace ProjectSurvicor
     public class ExpUpgradeSystem : AbstractSystem
     {
         public List<ExpUpgradeltem> items { get; } = new List<ExpUpgradeltem>();
+        public Dictionary<string, ExpUpgradeltem> Dictionary = new();
+        public Dictionary<string, string> Pairs = new()
+        {
+            {"simple_sword","simple_critical"},
+            {"simple_bomb","simple_fly_count"},
+            {"simple_knife","damage_rate"},
+            {"basket_ball","movement_speed_rate"},
+            {"rotate_sword","simple_exp"},
+
+            { "simple_critical","simple_sword"},
+            {"simple_fly_count","simple_bomb"},
+            {"damage_rate","simple_knife"},
+            {"movement_speed_rate","basket_ball"},
+            {"simple_exp","rotate_sword"},
+        };
+        public Dictionary<string, BindableProperty<bool>> PairedProperties = new()
+        {
+            {"simple_sword",Global.SuperSword},
+            {"simple_bomb",Global.SuperBomb},
+            {"simple_knife",Global.SuperKnife},
+            {"basket_ball",Global.SuperBasketBall},
+            {"rotate_sword",Global.SuperRotateSword}
+        };
         public ExpUpgradeltem Add(ExpUpgradeltem item)
         {
             items.Add(item);
@@ -28,7 +51,7 @@ namespace ProjectSurvicor
             items.Clear();
 
             Add(new ExpUpgradeltem(true)
-            .WihKey("simp_sword")
+            .WihKey("simple_sword")
             .WithDescription(lv =>
             {
                 return lv switch
@@ -325,25 +348,25 @@ namespace ProjectSurvicor
                         Global.BasketBallUnlocked.Value = true;
                         break;
                     case 2:
-                        Global.RotateSwordRange.Value += 3;
+                        Global.BasketBallDamage.Value += 3;
                         break;
                     case 3:
                         Global.BasketBallCount.Value += 1;
                         break;
                     case 4:
-                        Global.RotateSwordRange.Value += 3;
+                        Global.BasketBallDamage.Value += 3;
                         break;
                     case 5:
                         Global.BasketBallCount.Value += 1;
                         break;
                     case 6:
-                        Global.RotateSwordRange.Value += 3;
+                        Global.BasketBallDamage.Value += 3;
                         break;
                     case 7:
                         Global.BasketBallSpeed.Value *= 1.2f;
                         break;
                     case 8:
-                        Global.RotateSwordRange.Value += 3;
+                        Global.BasketBallDamage.Value += 3;
                         break;
                     case 9:
                         Global.BasketBallSpeed.Value *= 1.2f;
@@ -611,7 +634,7 @@ namespace ProjectSurvicor
                       }
                   })
                   );
-
+            Dictionary = items.ToDictionary(i=>i.Key);
         }
         public void Roll()
         {

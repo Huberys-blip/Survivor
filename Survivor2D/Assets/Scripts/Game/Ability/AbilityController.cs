@@ -39,7 +39,14 @@ namespace Script
 				}
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 			//随机升级一个
-			this.GetSystem<ExpUpgradeSystem>().items.Where(item=>item.IsWeapon).ToList().GetRandomItem().Upgrade();
+			this.GetSystem<ExpUpgradeSystem>().items.Where(item => item.IsWeapon).ToList().GetRandomItem().Upgrade();
+			Global.SuperBomb.RegisterWithInitValue(unlocker =>
+			{
+				if (unlocker)
+				{
+					SuperBomb.Show();
+				}
+			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 		}
 		 public IArchitecture GetArchitecture()
         {

@@ -10,6 +10,8 @@ namespace Script
 		public float Hp = 3f;
 		public float MoveSpeed = 2f;
 		public Color DissolveColor = Color.red;
+
+		public bool TreasureChestEnemy = false;
 		void Start()
 		{
 			EnemyGenerator.EnemyCount.Value++;
@@ -38,7 +40,7 @@ namespace Script
 		{	
 			if (Hp <= 0)
 			{
-				Global.GeneratePowerUp(gameObject);
+				Global.GeneratePowerUp(gameObject,TreasureChestEnemy);
 				FxController.Play(Sprite,DissolveColor);
 				AudioKit.PlaySound(Sfx.ENEMYDIE);
 				this.DestroyGameObjGracefully();	

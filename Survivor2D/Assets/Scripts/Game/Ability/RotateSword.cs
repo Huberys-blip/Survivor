@@ -24,8 +24,8 @@ namespace Script
 							{
 								if (hurtbox.Owner.CompareTag("Enemy"))
 								{
-									DamageSystem.CalculatDamage(Global.RotateSwordDamage.Value, hurtbox.Owner.GetComponent<Enemy>());
-									//hurtbox.Owner.GetComponent<Enemy>().Hurt(Global.RotateSwordDamage.Value);
+									var damageTimes = Global.SuperRotateSword.Value ? Random.Range(2, 3 + 1) : 1;
+									DamageSystem.CalculatDamage(Global.RotateSwordDamage.Value*damageTimes, hurtbox.Owner.GetComponent<Enemy>());
 									if (Random.Range(0, 1.0f) < 0.5f)
 									{
 										collider.attachedRigidbody.velocity = collider.NormalizedDirection2DFrom(self) * 5 + collider.NormalizedDirection2DFrom(Player.Instance) * 10;
@@ -65,9 +65,8 @@ namespace Script
 		}
 		private void Update()
 		{
-
-			var degree = Time.frameCount * Global.RotateSwordSpeed.Value;
-			this.LocalEulerAnglesZ(-degree);
+			var speed = Global.SuperRotateSword.Value ? Time.frameCount * 10 : Global.RotateSwordSpeed.Value * Time.frameCount;
+			this.LocalEulerAnglesZ(-speed);
 
 		}
 	}

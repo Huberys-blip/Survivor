@@ -1,4 +1,4 @@
-// Generate Id:6a744331-299a-4645-9cde-5af279d5a33c
+// Generate Id:a530cc72-3d92-406f-82a3-e2ad63f07cdf
 using UnityEngine;
 
 namespace Script
@@ -14,6 +14,8 @@ namespace Script
 		public Script.SimpleKnife SimpleKnife;
 		
 		public Script.BasketBallAility BasketBallAility;
+		
+		public Script.SuperBomb SuperBomb;
 		
 	}
 }

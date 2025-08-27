@@ -19,23 +19,11 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: Script.SimpleSword
-      PathToRoot: SimpleSword
-      MemberName: SimpleSword
-    - TypeName: Script.RotateSword
-      PathToRoot: RotateSword
-      MemberName: RotateSword
-    - TypeName: Script.SimpleAxe
-      PathToRoot: SimpleAxe
-      MemberName: SimpleAxe
-    - TypeName: Script.SimpleKnife
-      PathToRoot: SimpleKnife
-      MemberName: SimpleKnife
-    - TypeName: Script.BasketBallAility
-      PathToRoot: BasketBallAility
-      MemberName: BasketBallAility
-    ScriptsFolder: Assets/Scripts/Game/Ability
-    ClassName: AbilityController
+    - TypeName: UnityEngine.Tilemaps.Tilemap
+      PathToRoot: Tilemap
+      MemberName: Tilemap
+    ScriptsFolder: Assets/Scripts/Game
+    ClassName: RepeatTileController
     Namespace: Script
     MainCode: 
     DesignerCode: 

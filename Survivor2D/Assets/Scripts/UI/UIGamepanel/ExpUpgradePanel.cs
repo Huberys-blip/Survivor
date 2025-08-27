@@ -33,8 +33,27 @@ namespace Script
 					{
 						if (visible)
 						{
-						
+							self.GetComponentInChildren<Text>().text =
+							expUpgradItem.Descriptopn;
 							selfCache.Show();
+							if (expUpgradeSystem.Pairs.TryGetValue(itemCache.Key, out var pairedName))
+							{
+								var pairedItem = expUpgradeSystem.Dictionary[pairedName];
+								if (pairedItem.CurrentLeve.Value > 0 && itemCache.CurrentLeve.Value == 0)
+								{
+									var pairedNameText = selfCache.transform.Find("PairedName");
+									pairedNameText.GetComponent<Text>().text = "配对技能:" + pairedItem.Key;
+									pairedNameText.Show();
+								}
+								else
+								{
+									selfCache.transform.Find("PairedName").Hide();
+								}
+							}
+							else
+							{
+								selfCache.transform.Find("PairedName").Hide();
+							}
 						}
 
 						else

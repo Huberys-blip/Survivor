@@ -12,6 +12,7 @@ namespace Script
 	public partial class UIGamepanel : UIPanel, IController
 	{
 		public static EasyEvent FlashScreen = new();
+		public static EasyEvent OpenTreasurePanel = new();
 		protected override void OnInit(IUIData uiData = null)
 		{
 			mData = uiData as UIGamepanelData ?? new UIGamepanelData();
@@ -88,7 +89,13 @@ namespace Script
 				.Lerp(0.5f, 0, 0.2f, alpha =>
 				{
 					ScreenColor.ColorAlpha(alpha);
-				},()=>ScreenColor.ColorAlpha(0)).Start(this);
+				}, () => ScreenColor.ColorAlpha(0)).Start(this);
+			}).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+			OpenTreasurePanel.Register(()=>
+			{
+				Time.timeScale = 0;
+				TreasureChestPanel.Show();
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 		}
 

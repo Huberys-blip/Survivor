@@ -34,7 +34,6 @@ namespace Script
 							if (hurtbox.Owner.CompareTag("Enemy"))
 							{
 								DamageSystem.CalculatDamage(2,hurtbox.Owner.GetComponent<Enemy>());
-								//hurtbox.Owner.GetComponent<Enemy>().Hurt(2);
 							}
 						}
 					}).UnRegisterWhenGameObjectDestroyed(self);

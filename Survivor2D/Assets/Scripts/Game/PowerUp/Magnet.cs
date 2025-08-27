@@ -1,10 +1,12 @@
 using UnityEngine;
 using QFramework;
+using ProjectSurvicor;
 
 namespace Script
 {
-	public partial class Magnet : ViewController
+	public partial class Magnet : GamePlayObject
 	{
+		protected override Collider2D Collider2D => SelfCircleCollider2D;
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.GetComponent<CollectableArea>())

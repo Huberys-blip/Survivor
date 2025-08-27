@@ -424,8 +424,10 @@ MonoBehaviour:
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
   ViewControllerFullTypeName: 
-  hp: 100
+  Hp: 3
   MoveSpeed: 1.5
+  DissolveColor: {r: 1, g: 0, b: 0, a: 1}
+  TreasureChestEnemy: 1
   Sprite: {fileID: 3295877419196209554}
   SelfRigidbody2D: {fileID: 9098326328534305446}
 --- !u!50 &9098326328534305446

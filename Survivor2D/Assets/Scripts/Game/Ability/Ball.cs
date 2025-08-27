@@ -12,6 +12,13 @@ namespace Script
 			SelfRigidbody2D.velocity =
 			new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)) *
 			Random.Range(Global.BasketBallSpeed.Value - 2, Global.BasketBallSpeed.Value + 2);
+			Global.SuperBasketBall.RegisterWithInitValue(unlocked =>
+			{
+				if (unlocked)
+				{
+					this.LocalScale(3);
+				}
+			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 			HurtBox.OnTriggerEnter2DEvent(Collider =>
 			{
 				var hurtBox = Collider.GetComponent<HurtBox>();
@@ -20,8 +27,8 @@ namespace Script
 					if (hurtBox.Owner.CompareTag("Enemy"))
 					{
 						var enemy = hurtBox.Owner.GetComponent<IEnemy>();
-						DamageSystem.CalculatDamage(Global.BasketBallDamage.Value,enemy);
-						//enemy.Hurt(Global.BasketBallDamage.Value);
+						var damageTiems = Global.SuperBasketBall.Value ? Random.Range(2, 3 + 1) : 1;
+						DamageSystem.CalculatDamage(Global.BasketBallDamage.Value*damageTiems,enemy);
 						if (Random.Range(0, 1.0f) < 0.5f&&Collider.attachedRigidbody&&Player.Instance)
 						{
 							Collider.attachedRigidbody.velocity = Collider.NormalizedDirection2DFrom(this) * 5 + Collider.NormalizedDirection2DFrom(Player.Instance)  * 10;

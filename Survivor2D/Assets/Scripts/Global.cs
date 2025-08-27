@@ -8,9 +8,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 namespace ProjectSurvicor
 {
-    public class Global:Architecture<Global>
+    public class Global : Architecture<Global>
     {
-        
+
         /// <summary>
         /// 主角hp
         /// </summary>
@@ -50,7 +50,7 @@ namespace ProjectSurvicor
         /// <summary>
         /// 范围
         /// </summary>
-        public static BindableProperty<float> SimpleSwordRange= new(Config.InitSimpleSwordRange);
+        public static BindableProperty<float> SimpleSwordRange = new(Config.InitSimpleSwordRange);
         /// <summary>
         /// 小刀能力开启
         /// </summary>
@@ -88,7 +88,7 @@ namespace ProjectSurvicor
         ///  守护范围
         /// </summary>
         public static BindableProperty<float> RotateSwordRange = new(Config.InitRotateSwordRange);
-          /// <summary>
+        /// <summary>
         /// 篮球能力开启
         /// </summary>
         public static BindableProperty<bool> BasketBallUnlocked = new(false);
@@ -99,12 +99,12 @@ namespace ProjectSurvicor
         /// <summary>
         /// 篮球速度
         /// </summary>
-        public static BindableProperty<float> BasketBallSpeed  = new(Config.InitBasketBallSpeed);
+        public static BindableProperty<float> BasketBallSpeed = new(Config.InitBasketBallSpeed);
         /// <summary>
         /// 篮球数量
         /// </summary>
-        public static BindableProperty<int> BasketBallCount  = new(Config.InitBasketBallCount);
-     
+        public static BindableProperty<int> BasketBallCount = new(Config.InitBasketBallCount);
+
         /// <summary>
         /// 间隔时间
         /// </summary>
@@ -123,10 +123,17 @@ namespace ProjectSurvicor
         public static BindableProperty<float> BombPercent = new(Config.InitBombPercent);
         public static BindableProperty<float> CriticalRate = new(Config.InitCriticalRate);
         public static BindableProperty<float> DamageRate = new(1);
-        public static BindableProperty<int> AdditionalFlyThingCount= new(0);
-        public static BindableProperty<float> MovementSpeedRate= new(1);
-        public static BindableProperty<float> CollectableArea= new(Config.InitCollectableArea);
-        public static BindableProperty<float> AdditonalExpercent= new(0);
+        public static BindableProperty<int> AdditionalFlyThingCount = new(0);
+        public static BindableProperty<float> MovementSpeedRate = new(1);
+        public static BindableProperty<float> CollectableArea = new(Config.InitCollectableArea);
+        public static BindableProperty<float> AdditonalExpercent = new(0);
+
+        public static BindableProperty<bool> SuperKnife = new(false);
+        public static BindableProperty<bool> SuperSword = new(false);
+        public static BindableProperty<bool> SuperRotateSword = new(false);
+        public static BindableProperty<bool> SuperBomb = new(false);
+        public static BindableProperty<bool> SuperBasketBall = new(false);
+
 
         [RuntimeInitializeOnLoadMethod]
         public static void Autoinit()
@@ -157,7 +164,7 @@ namespace ProjectSurvicor
         {
             AdditonalExpercent.Value = 0;
             CollectableArea.Value = Config.InitCollectableArea;
-            MovementSpeedRate.Value=1;
+            MovementSpeedRate.Value = 1;
             hp.Value = MaxHp.Value;
             AdditionalFlyThingCount.Value = 0;
             Exp.Value = 0;
@@ -188,6 +195,11 @@ namespace ProjectSurvicor
             BombDamage.Value = Config.InitBombDamage;
             BombPercent.Value = Config.InitBombPercent;
             CriticalRate.Value = Config.InitCriticalRate;
+            SuperKnife.Value = false;
+            SuperSword.Value = false;
+            SuperRotateSword.Value = false;
+            SuperBomb.Value = false;
+            SuperBasketBall.Value = false;
         }
         public static int ExpToNextLevel()
         {
@@ -196,10 +208,18 @@ namespace ProjectSurvicor
         /// <summary>
         ///经验掉落
         /// </summary>
-        public static void GeneratePowerUp(GameObject enemy)
+        public static void GeneratePowerUp(GameObject enemy, bool treasureChes)
         {
+            if (treasureChes)
+            {
+                PowerUpManager.Instance.TreasureChest
+                .Instantiate()
+                .Position(enemy.Position())
+                .Show();
+                return;
+            }
             var exprandom = UnityEngine.Random.Range(0, 1f);
-            if (exprandom <= ExpPercent.Value+AdditonalExpercent.Value)
+            if (exprandom <= ExpPercent.Value + AdditonalExpercent.Value)
             {
                 PowerUpManager.Instance.Exp.Instantiate()
                     .Position(enemy.Position())
@@ -223,7 +243,7 @@ namespace ProjectSurvicor
                 return;
             }
             if (BombUnlocked.Value)
-             {
+            {
                 var bombrandom = UnityEngine.Random.Range(0, 1f);
                 if (bombrandom <= BombPercent.Value)
                 {
@@ -231,9 +251,9 @@ namespace ProjectSurvicor
                     .Position(enemy.Position())
                     .Show();
                     return;
-                 }
+                }
             }
-          
+
             var getallexpbrandom = UnityEngine.Random.Range(0, 1f);
             if (getallexpbrandom <= 0.3f)
             {
@@ -241,8 +261,8 @@ namespace ProjectSurvicor
                    .Position(enemy.Position())
                    .Show();
             }
-             var magnetrandom = UnityEngine.Random.Range(0, 1f);
-               if (magnetrandom <= 0.3f)
+            var magnetrandom = UnityEngine.Random.Range(0, 1f);
+            if (magnetrandom <= 0.3f)
             {
                 PowerUpManager.Instance.Magnet.Instantiate()
                    .Position(enemy.Position())

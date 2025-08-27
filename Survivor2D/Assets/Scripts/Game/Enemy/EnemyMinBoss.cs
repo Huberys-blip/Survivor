@@ -112,7 +112,7 @@ namespace Script
 			FSM.Update();
 			if (Hp <= 0)
 			{
-				Global.GeneratePowerUp(gameObject);
+				Global.GeneratePowerUp(gameObject,true);
 				this.DestroyGameObjGracefully();
 			}
 		}

@@ -1,17 +1,24 @@
 using UnityEngine;
 using QFramework;
+using ProjectSurvicor;
 
 namespace Script
 {
-	public partial class HitBox : ViewController
+	public partial class HitBox : GamePlayObject
 	{
 		public GameObject Owner;
-		void Start()
+        void Awake()
+        {
+            mCollider2D = GetComponent<Collider2D>();
+        }
+        void Start()
 		{
 			if (!Owner)
 			{
-				Owner =transform.parent.gameObject;
+				Owner = transform.parent.gameObject;
 			}
 		}
+		private Collider2D mCollider2D;
+		protected override Collider2D Collider2D => mCollider2D;
 	}
 }

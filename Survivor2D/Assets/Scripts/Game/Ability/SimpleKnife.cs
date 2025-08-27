@@ -53,9 +53,8 @@ namespace Script
 								{
 									if (hurtbox.Owner.CompareTag("Enemy"))
 									{
-										DamageSystem.CalculatDamage(Global.SimpleKnifeDamage.Value,hurtbox.Owner.GetComponent<Enemy>());
-										//hurtbox.Owner.GetComponent<Enemy>().Hurt(Global.SimpleKnifeDamage.Value);
-										// SelfCache.DestroyGameObjGracefully();
+										var damageTimes =Global. SuperKnife.Value ? Random.Range(2, 3+1) : 1;
+										DamageSystem.CalculatDamage(Global.SimpleKnifeDamage.Value*damageTimes,hurtbox.Owner.GetComponent<Enemy>());
 									}
 								}
 							}).UnRegisterWhenGameObjectDestroyed(self);

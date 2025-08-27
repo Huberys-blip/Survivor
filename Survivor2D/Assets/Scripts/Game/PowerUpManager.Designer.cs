@@ -1,4 +1,4 @@
-// Generate Id:03db0f53-17cf-4c70-9525-da7c27beca01
+// Generate Id:b7a564b2-b571-47da-936d-169e93fc2239
 using UnityEngine;
 
 namespace Script
@@ -16,6 +16,8 @@ namespace Script
 		public Script.GetAllExp GetAllExp;
 		
 		public QFramework.ViewController Magnet;
+		
+		public Script.TreasureChest TreasureChest;
 		
 	}
 }
