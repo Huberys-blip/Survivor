@@ -11,6 +11,11 @@
 namespace QAssetBundle
 {
     
+    public class Myicon_spriteatlasv2
+    {
+        public const string BundleName = "myicon_spriteatlasv2";
+        public const string MYICON = "MyIcon";
+    }
     public class Sfx
     {
         public const string BundleName = "sfx";
@@ -29,6 +34,7 @@ namespace QAssetBundle
         public const string KNIFE = "knife";
         public const string LEVELUP = "LevelUp";
         public const string TREASUER_CHEST = "Treasuer_chest";
+        public const string WALK = "Walk";
     }
     public class Uigameoverpanel_prefab
     {

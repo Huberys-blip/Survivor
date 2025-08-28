@@ -5,7 +5,7 @@ using QFramework;
 
 namespace Script
 {
-	// Generate Id:62acfd44-ae15-452a-b46d-41933ee68c8d
+	// Generate Id:6c007e41-fdc3-4b1b-938c-4d45766fd3b8
 	public partial class UIGamepanel
 	{
 		public const string Name = "UIGamepanel";

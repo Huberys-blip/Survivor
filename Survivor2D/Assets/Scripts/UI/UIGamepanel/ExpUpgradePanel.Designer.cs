@@ -1,5 +1,5 @@
 ﻿/****************************************************************************
- * 2025.8 AF的铁疙瘩
+ * 2025.8 蜘蛛
  ****************************************************************************/
 
 using UnityEngine;
@@ -12,11 +12,13 @@ namespace Script
 	{
 		[SerializeField] public RectTransform UpgradeRoot;
 		[SerializeField] public UnityEngine.UI.Button BtnExpUpgtadeitemTemplate;
+		[SerializeField] public UnityEngine.UI.Image Icon;
 
 		public void Clear()
 		{
 			UpgradeRoot = null;
 			BtnExpUpgtadeitemTemplate = null;
+			Icon = null;
 		}
 
 		public override string ComponentName

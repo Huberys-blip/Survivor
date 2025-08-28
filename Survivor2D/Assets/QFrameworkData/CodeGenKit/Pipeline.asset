@@ -19,11 +19,17 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: UnityEngine.Tilemaps.Tilemap
-      PathToRoot: Tilemap
-      MemberName: Tilemap
+    - TypeName: UnityEngine.Animator
+      PathToRoot: Sprite
+      MemberName: Sprite
+    - TypeName: CircleCollider2D
+      PathToRoot: HitBox
+      MemberName: HitBox
+    - TypeName: UnityEngine.UI.Image
+      PathToRoot: Canvas/HpValue
+      MemberName: HpValue
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: RepeatTileController
+    ClassName: Player
     Namespace: Script
     MainCode: 
     DesignerCode: 

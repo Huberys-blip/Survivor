@@ -52,6 +52,11 @@ namespace ProjectSurvicor
 
             Add(new ExpUpgradeltem(true)
             .WihKey("simple_sword")
+             .WithName("剑")
+             .WithIconName("simple_sword_icon")
+             .WithPairedaName("合成后的剑")
+             .WithpairedIconName("paired_simple_sword_icon")
+             .WithPairedDescription("攻击力翻倍 攻击范围翻倍")
             .WithDescription(lv =>
             {
                 return lv switch
@@ -118,6 +123,11 @@ namespace ProjectSurvicor
             );
 
             Add(new ExpUpgradeltem(false).WihKey("simple_bomb")
+                   .WithName("炸弹")
+             .WithIconName("bomb_icon")
+             .WithPairedaName("合成后的炸弹")
+             .WithpairedIconName("paired_bomb_icon")
+             .WithPairedDescription("每隔15秒 爆炸一次")
            .WithMaxLevel(10)
            .WithDescription(lv =>
            {
@@ -187,6 +197,11 @@ namespace ProjectSurvicor
 
 
             Add(new ExpUpgradeltem(true).WihKey("simple_knife")
+                  .WithName("飞刀")
+             .WithIconName("simple_knife_icon")
+             .WithPairedaName("合成后的飞刀")
+             .WithpairedIconName("paired_simple_knife_icon")
+             .WithPairedDescription("攻击力翻倍")
             .WithMaxLevel(10)
             .WithDescription(lv =>
             {
@@ -256,6 +271,11 @@ namespace ProjectSurvicor
 
             Add(new ExpUpgradeltem(true).WihKey("rotate_sword")
           .WithMaxLevel(10)
+            .WithName("守护剑")
+             .WithIconName("rotate_sword_icon")
+             .WithPairedaName("合成后的守护剑")
+             .WithpairedIconName("paired_rotate_sword_icon")
+             .WithPairedDescription("攻击力翻倍 旋转速度翻倍")
           .WithDescription(lv =>
           {
               return lv switch
@@ -322,6 +342,11 @@ namespace ProjectSurvicor
 
 
             Add(new ExpUpgradeltem(true).WihKey("basket_ball")
+                  .WithName("篮球")
+             .WithIconName("ball_icon")
+             .WithPairedaName("合成后的篮球")
+             .WithpairedIconName("paired_ball_icon")
+             .WithPairedDescription("攻击力翻倍 体积变大")
             .WithMaxLevel(10)
             .WithDescription(lv =>
             {
@@ -381,6 +406,8 @@ namespace ProjectSurvicor
 
 
             Add(new ExpUpgradeltem(false).WihKey("simple_critical")
+            .WithName("暴击")
+            .WithIconName("critical_icon")
             .WithMaxLevel(11)
             .WithDescription(lv =>
             {
@@ -442,6 +469,8 @@ namespace ProjectSurvicor
             );
 
             Add(new ExpUpgradeltem(false).WihKey("damage_rate")
+              .WithName("伤害率")
+            .WithIconName("damage_icon")
             .WithMaxLevel(10)
             .WithDescription(lv =>
             {
@@ -499,6 +528,8 @@ namespace ProjectSurvicor
             );
 
             Add(new ExpUpgradeltem(false).WihKey("simple_fly_count")
+              .WithName("飞行物")
+            .WithIconName("fly_icon")
            .WithMaxLevel(4)
            .WithDescription(lv =>
            {
@@ -532,7 +563,8 @@ namespace ProjectSurvicor
            );
 
 
-            Add(new ExpUpgradeltem(false).WihKey("movement_speed_rate")
+            Add(new ExpUpgradeltem(false).WihKey("movement_speed_rate")  .WithName("移动速度")
+            .WithIconName("movement_icon")
        .WithMaxLevel(5)
        .WithDescription(lv =>
        {
@@ -570,6 +602,8 @@ namespace ProjectSurvicor
        );
 
             Add(new ExpUpgradeltem(false).WihKey("simple_collectable_area")
+              .WithName("拾取范围")
+            .WithIconName("collectable_icon")
                .WithMaxLevel(3)
                .WithDescription(lv =>
                {
@@ -598,7 +632,9 @@ namespace ProjectSurvicor
                })
                );
 
-            Add(new ExpUpgradeltem(false).WihKey("simple_exp")
+            Add(new ExpUpgradeltem(false).WihKey("simple_exp") 
+             .WithName("经验值")
+            .WithIconName("exp_icon")
                   .WithMaxLevel(5)
                   .WithDescription(lv =>
                   {
