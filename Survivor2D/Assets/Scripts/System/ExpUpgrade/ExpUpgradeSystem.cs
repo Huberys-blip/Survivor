@@ -9,28 +9,33 @@ namespace ProjectSurvicor
     public class ExpUpgradeSystem : AbstractSystem
     {
         public List<ExpUpgradeltem> items { get; } = new List<ExpUpgradeltem>();
+        public static bool AllUnlockedFinish = false;
+        public static void ChackAllUnlockedFinish()
+        {
+            AllUnlockedFinish = Global.Interface.GetSystem<ExpUpgradeSystem>().items.All(i => i.UpgradeFinish);
+        }
         public Dictionary<string, ExpUpgradeltem> Dictionary = new();
         public Dictionary<string, string> Pairs = new()
         {
-            {"simple_sword","simple_critical"},
-            {"simple_bomb","simple_fly_count"},
-            {"simple_knife","damage_rate"},
-            {"basket_ball","movement_speed_rate"},
-            {"rotate_sword","simple_exp"},
+            {"simple_sword_icon","critical_icon"},
+            {"bomb_icon","fly_icon"},
+            {"simple_knife_icon","damage_icon"},
+            {"ball_icon","movement_icon"},
+            {"rotate_sword_icon","exp_icon"},
 
-            { "simple_critical","simple_sword"},
-            {"simple_fly_count","simple_bomb"},
-            {"damage_rate","simple_knife"},
-            {"movement_speed_rate","basket_ball"},
-            {"simple_exp","rotate_sword"},
+            { "critical_icon","simple_sword_icon"},
+            {"fly_icon","bomb_icon"},
+            {"damage_icon","simple_knife_icon"},
+            {"movement_icon","ball_icon"},
+            {"exp_icon","rotate_sword_icon"},
         };
         public Dictionary<string, BindableProperty<bool>> PairedProperties = new()
         {
-            {"simple_sword",Global.SuperSword},
-            {"simple_bomb",Global.SuperBomb},
-            {"simple_knife",Global.SuperKnife},
-            {"basket_ball",Global.SuperBasketBall},
-            {"rotate_sword",Global.SuperRotateSword}
+            {"simple_sword_icon",Global.SuperSword},
+            {"bomb_icon",Global.SuperBomb},
+            {"simple_knife_icon",Global.SuperKnife},
+            {"ball_icon",Global.SuperBasketBall},
+            {"rotate_sword_icon",Global.SuperRotateSword}
         };
         public ExpUpgradeltem Add(ExpUpgradeltem item)
         {
@@ -51,7 +56,7 @@ namespace ProjectSurvicor
             items.Clear();
 
             Add(new ExpUpgradeltem(true)
-            .WihKey("simple_sword")
+            .WihKey("simple_sword_icon")
              .WithName("剑")
              .WithIconName("simple_sword_icon")
              .WithPairedaName("合成后的剑")
@@ -122,7 +127,7 @@ namespace ProjectSurvicor
             })
             );
 
-            Add(new ExpUpgradeltem(false).WihKey("simple_bomb")
+            Add(new ExpUpgradeltem(false).WihKey("bomb_icon")
                    .WithName("炸弹")
              .WithIconName("bomb_icon")
              .WithPairedaName("合成后的炸弹")
@@ -196,7 +201,7 @@ namespace ProjectSurvicor
 
 
 
-            Add(new ExpUpgradeltem(true).WihKey("simple_knife")
+            Add(new ExpUpgradeltem(true).WihKey("simple_knife_icon")
                   .WithName("飞刀")
              .WithIconName("simple_knife_icon")
              .WithPairedaName("合成后的飞刀")
@@ -269,7 +274,7 @@ namespace ProjectSurvicor
             );
 
 
-            Add(new ExpUpgradeltem(true).WihKey("rotate_sword")
+            Add(new ExpUpgradeltem(true).WihKey("rotate_sword_icon")
           .WithMaxLevel(10)
             .WithName("守护剑")
              .WithIconName("rotate_sword_icon")
@@ -341,7 +346,7 @@ namespace ProjectSurvicor
 
 
 
-            Add(new ExpUpgradeltem(true).WihKey("basket_ball")
+            Add(new ExpUpgradeltem(true).WihKey("ball_icon")
                   .WithName("篮球")
              .WithIconName("ball_icon")
              .WithPairedaName("合成后的篮球")
@@ -405,7 +410,7 @@ namespace ProjectSurvicor
 
 
 
-            Add(new ExpUpgradeltem(false).WihKey("simple_critical")
+            Add(new ExpUpgradeltem(false).WihKey("critical_icon")
             .WithName("暴击")
             .WithIconName("critical_icon")
             .WithMaxLevel(11)
@@ -527,7 +532,7 @@ namespace ProjectSurvicor
             })
             );
 
-            Add(new ExpUpgradeltem(false).WihKey("simple_fly_count")
+            Add(new ExpUpgradeltem(false).WihKey("fly_icon")
               .WithName("飞行物")
             .WithIconName("fly_icon")
            .WithMaxLevel(4)
@@ -563,7 +568,7 @@ namespace ProjectSurvicor
            );
 
 
-            Add(new ExpUpgradeltem(false).WihKey("movement_speed_rate")  .WithName("移动速度")
+            Add(new ExpUpgradeltem(false).WihKey("movement_icon")  .WithName("移动速度")
             .WithIconName("movement_icon")
        .WithMaxLevel(5)
        .WithDescription(lv =>
@@ -632,7 +637,7 @@ namespace ProjectSurvicor
                })
                );
 
-            Add(new ExpUpgradeltem(false).WihKey("simple_exp") 
+            Add(new ExpUpgradeltem(false).WihKey("exp_icon") 
              .WithName("经验值")
             .WithIconName("exp_icon")
                   .WithMaxLevel(5)

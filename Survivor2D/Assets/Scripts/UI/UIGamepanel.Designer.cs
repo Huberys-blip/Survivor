@@ -5,11 +5,13 @@ using QFramework;
 
 namespace Script
 {
-	// Generate Id:6c007e41-fdc3-4b1b-938c-4d45766fd3b8
+	// Generate Id:4f3f550a-c042-4236-9312-e87cbc5d0b1d
 	public partial class UIGamepanel
 	{
 		public const string Name = "UIGamepanel";
 		
+		[SerializeField]
+		public UnlockedlconPanel UnlockedlconPanel;
 		[SerializeField]
 		public UnityEngine.UI.Text LevelText;
 		[SerializeField]
@@ -31,6 +33,7 @@ namespace Script
 		
 		protected override void ClearUIComponents()
 		{
+			UnlockedlconPanel = null;
 			LevelText = null;
 			TimeText = null;
 			EnemyCountText = null;

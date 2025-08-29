@@ -8,22 +8,20 @@ using QFramework;
 
 namespace Script
 {
-	public partial class TreasureChestPanel
+	public partial class UnlockedlconPanel
 	{
-		[SerializeField] public UnityEngine.UI.Button BtnSure;
-		[SerializeField] public UnityEngine.UI.Text Content;
-		[SerializeField] public UnityEngine.UI.Image Icon;
+		[SerializeField] public UnityEngine.UI.Image UnlockedlconTemplate;
+		[SerializeField] public RectTransform UnlockedlconRoot;
 
 		public void Clear()
 		{
-			BtnSure = null;
-			Content = null;
-			Icon = null;
+			UnlockedlconTemplate = null;
+			UnlockedlconRoot = null;
 		}
 
 		public override string ComponentName
 		{
-			get { return "TreasureChestPanel";}
+			get { return "UnlockedlconPanel";}
 		}
 	}
 }

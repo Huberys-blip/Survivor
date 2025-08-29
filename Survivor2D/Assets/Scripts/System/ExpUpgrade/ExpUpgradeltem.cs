@@ -16,7 +16,7 @@ namespace ProjectSurvicor
         public bool IsWeapon = false;
         public string Name { get; private set; }
         public EasyEvent OnChanged = new();
-        public bool UpgradeFinish { get; set; } = false;
+        public bool UpgradeFinish => CurrentLeve.Value>=MaxLevel;
         public string Key { get; private set; }
         public string Descriptopn => mDescriprionFactory(CurrentLeve.Value+1);
         public int MaxLevel { get; private set; }
@@ -28,10 +28,7 @@ namespace ProjectSurvicor
         {
             CurrentLeve.Value++;
             mOnUpgrade?.Invoke(this, CurrentLeve.Value);
-            if (CurrentLeve.Value > 10)
-            {
-                UpgradeFinish = true;
-            }
+            ExpUpgradeSystem.ChackAllUnlockedFinish();
             OnChanged.Trigger();
         }
         private Action<ExpUpgradeltem,int> mOnUpgrade;

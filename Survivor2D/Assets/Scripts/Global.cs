@@ -275,6 +275,7 @@ namespace ProjectSurvicor
             this.RegisterSystem(new SaveSystem());
             this.RegisterSystem(new CoinUpgradeSystem());
             this.RegisterSystem(new ExpUpgradeSystem());
+            this.RegisterSystem(new AchievementSystem());
         }
     }
 }
